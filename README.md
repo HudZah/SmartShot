@@ -1,7 +1,7 @@
 # SmartShot
 
 ## Introduction
-SmartShot automates the task of organizing and renaming screenshots in a specified folder on macOS. It uses image analysis to intelligently rename screenshots based on their content.
+SmartShot automates the task of organizing and renaming screenshots in a specified folder on macOS. It uses the built-in Automater app to auto-detect when new screenshots are taken and runs a script to rename them.
 
 ## Setup Instructions
 
@@ -10,6 +10,7 @@ SmartShot automates the task of organizing and renaming screenshots in a specifi
    - Open your Terminal.
    - Edit your `.zshrc` file by typing `nano ~/.zshrc`.
    - Add the following line at the end of the file:
+  
      ```sh
      export OPENAI_API_KEY='your-api-key'
      ```
@@ -17,6 +18,14 @@ SmartShot automates the task of organizing and renaming screenshots in a specifi
 ### Python Script
 1. **Place the Python Script:**
    - Save the provided Python script (e.g., `renamer.py`) to a directory, such as `/Users/[YourUsername]/[some_folder]/screenshot-renamer/`.
+2. **Modify DIRS inside renamer.py**
+   - Modify the DIRS for your screenshot folder:
+  
+     ```python3
+      DIRS = [
+        "/Users/username/path_to_screenshots",
+        "/Users/username/some_folder/screenshot-renamer/processed.log"]
+     ```   
 
 ### Automator Configuration
 1. **Create a Folder Action:**
