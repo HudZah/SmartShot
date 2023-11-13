@@ -84,7 +84,7 @@ def main():
     # Modify these paths to your own
     DIRS = [
         "/Users/username/path_to_screenshots",
-        "/Users/username/some_folder/screenshot-renamer/processed.log",
+        "/Users/hudzah/some_folder/screenshot-renamer/processed.log",
     ]
 
     screenshots_dir = DIRS[0]
