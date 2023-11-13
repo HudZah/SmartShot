@@ -65,12 +65,38 @@ def rename_image(image_path, description):
     return new_path
 
 
+def has_been_processed(filename, processed_log):
+    """Check if a file has already been processed."""
+    if os.path.exists(processed_log):
+        with open(processed_log, "r") as log:
+            if filename in log.read():
+                return True
+    return False
+
+
+def mark_as_processed(filename, processed_log):
+    """Mark a file as processed by logging its name."""
+    with open(processed_log, "a") as log:
+        log.write(filename + "\n")
+
+
 def main():
-    screenshots_dir = "/Users/hudzah/Documents/Screenshots"
+    # Modify these paths to your own
+    DIRS = [
+        "/Users/username/path_to_screenshots",
+        "/Users/username/some_folder/screenshot-renamer/processed.log",
+    ]
+
+    screenshots_dir = DIRS[0]
+    processed_log = DIRS[1]
+
     latest_screenshot = find_latest_screenshot(screenshots_dir)
-    description = analyze_image(latest_screenshot)
-    new_path = rename_image(latest_screenshot, description)
-    print(f"Renamed '{latest_screenshot}' to '{new_path}'")
+
+    if not has_been_processed(latest_screenshot, processed_log):
+        description = analyze_image(latest_screenshot)
+        new_path = rename_image(latest_screenshot, description)
+        mark_as_processed(latest_screenshot, processed_log)
+        print(f"Renamed '{latest_screenshot}'")
 
 
 if __name__ == "__main__":
