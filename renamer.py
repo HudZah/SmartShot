@@ -95,8 +95,10 @@ def main():
     if not has_been_processed(latest_screenshot, processed_log):
         description = analyze_image(latest_screenshot)
         new_path = rename_image(latest_screenshot, description)
-        mark_as_processed(latest_screenshot, processed_log)
-        print(f"Renamed '{latest_screenshot}'")
+        mark_as_processed(new_path, processed_log)
+        print(
+            f"Renamed '{latest_screenshot}' to '{new_path}' and added to processed log"
+        )
 
 
 if __name__ == "__main__":
